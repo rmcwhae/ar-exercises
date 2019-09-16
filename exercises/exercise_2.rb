@@ -5,8 +5,6 @@ puts "Exercise 2"
 puts "----------"
 
 # Your code goes here ...
-class Stores < ActiveRecord::Base
-end
 @store1 = Stores.find_by(id: 1)
 @store2 = Stores.find_by(id: 2)
 # puts @store1.name
