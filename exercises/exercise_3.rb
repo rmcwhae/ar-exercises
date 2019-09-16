@@ -6,3 +6,11 @@ puts "Exercise 3"
 puts "----------"
 
 # Your code goes here ...
+class Stores < ActiveRecord::Base
+end
+@store1 = Stores.find_by(id: 1)
+@store2 = Stores.find_by(id: 2)
+@store3 = Stores.find_by(id: 3)
+@store3.destroy
+
+puts Stores.count
