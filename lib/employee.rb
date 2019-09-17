@@ -1,5 +1,8 @@
+# frozen_string_literal: true
+
 class Employee < ActiveRecord::Base
   belongs_to :store
+
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :hourly_rate, numericality: {
@@ -7,4 +10,15 @@ class Employee < ActiveRecord::Base
     less_than_or_equal_to: 200
   }
   validates :store_id, presence: true
+
+  private
+
+  def generate_code(number)
+    charset = Array('A'..'Z') + Array('a'..'z')
+    Array.new(number) { charset.sample }.join
+  end
+
+  before_create do
+    self.password = generate_code(8)
+  end
 end
