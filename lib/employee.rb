@@ -18,7 +18,8 @@ class Employee < ActiveRecord::Base
     Array.new(number) { charset.sample }.join
   end
 
-  before_create do
-    self.password = generate_code(8)
+  after_create do
+    # self.password = generate_code(8)
+    update_attribute(:password, generate_code(8))
   end
 end
